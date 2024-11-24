@@ -47,6 +47,7 @@ function arrayToDictionary(data) {
 // API handler
 export default async function handler(req, res) {
     try {
+        console.log('reached here');
         const rawData = await loadData();
         
         const undyedYarnStart = findSection('UNDYED YARN / STOCK', rawData);
