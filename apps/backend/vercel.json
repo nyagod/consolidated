@@ -2,7 +2,7 @@
   "version": 2,
   "functions": {
     "api/**/*": {
-      "includeFiles": ".public/CONSOLIDATED REPORT OCTOBER 2024.xlsx"
+      "includeFiles": "api/CONSOLIDATED REPORT OCTOBER 2024.xlsx"
     }
   },
   "rewrites": [
