@@ -16,12 +16,13 @@ async function readExcelFile(filePath) {
 
 // Load the workbook and access the 'Consolidated' sheet
 async function loadData() {
+    // Change the file path to point to the same directory as the API
     const filePath = path.join(process.cwd(), 'CONSOLIDATED REPORT OCTOBER 2024.xlsx');
     const workbook = await readExcelFile(filePath);
     const sheet = workbook.Sheets['Consolidated'];
     
     // Limit the range by specifying rows and columns (for example, A1:F50)
-    const range = 'A1:F300'; // Adjust this range based on your needs
+    const range = 'A1:F400'; // Adjust this range based on your needs
     const rawData = xlsx.utils.sheet_to_json(sheet, { header: 1, defval: null, range: range });
     
     return rawData;
