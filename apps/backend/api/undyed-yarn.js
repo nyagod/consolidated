@@ -2,6 +2,9 @@ import fs from 'fs';
 import path from 'path';
 import xlsx from 'xlsx';
 
+// Get the absolute path to the Excel file in the 'api' folder
+const filePath = path.join(process.cwd(), 'api', 'CONSOLIDATED REPORT OCTOBER 2024.xlsx');
+
 // Function to read the Excel file asynchronously
 async function readExcelFile(filePath) {
     try {
@@ -16,15 +19,13 @@ async function readExcelFile(filePath) {
 
 // Load the workbook and access the 'Consolidated' sheet
 async function loadData() {
-    // Change the file path to point to the same directory as the API
-    const filePath = path.join(process.cwd(), 'CONSOLIDATED REPORT OCTOBER 2024.xlsx');
     const workbook = await readExcelFile(filePath);
     const sheet = workbook.Sheets['Consolidated'];
-    
+
     // Limit the range by specifying rows and columns (for example, A1:F50)
-    const range = 'A1:F400'; // Adjust this range based on your needs
+    const range = 'A1:F50'; // Adjust this range based on your needs
     const rawData = xlsx.utils.sheet_to_json(sheet, { header: 1, defval: null, range: range });
-    console.log(rawData);
+
     return rawData;
 }
 
@@ -47,18 +48,17 @@ function arrayToDictionary(data) {
 // API handler
 export default async function handler(req, res) {
     try {
-        console.log('reached here');
         const rawData = await loadData();
-        
+
         const undyedYarnStart = findSection('UNDYED YARN / STOCK', rawData);
         const availableSectionStart = findSection('AVAILABLE SECTION', rawData);
-        
+
         if (undyedYarnStart === -1 || availableSectionStart === -1) {
             return res.status(404).json({ message: 'Sections not found in the data.' });
         }
 
         const undyedYarnData = arrayToDictionary(rawData.slice(undyedYarnStart, availableSectionStart));
-        
+
         return res.status(200).json(undyedYarnData);
     } catch (error) {
         console.error('Error processing data:', error);
