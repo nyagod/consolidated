@@ -1,7 +1,7 @@
 const xlsx = require('xlsx');
 
 // Load the workbook and access the 'Consolidated' sheet
-const workbook = xlsx.readFile('CONSOLIDATED REPORT OCTOBER 2024.xlsx');
+const workbook = xlsx.readFile('./CONSOLIDATED REPORT OCTOBER 2024.xlsx');
 const sheet = workbook.Sheets['Consolidated'];
 const rawData = xlsx.utils.sheet_to_json(sheet, { header: 1, defval: null });
 
