@@ -1,1 +1,12 @@
-{ "version": 2, "rewrites": [{ "source": "/(.*)", "destination": "server.js" }] }
+{
+  "version": 2,
+  "rewrites": [
+    { "source": "/", "destination": "/api/hello" },
+    { "source": "/undyed-yarn", "destination": "/api/undyed-yarn" },
+    { "source": "/available-section", "destination": "/api/available-section" },
+    { "source": "/dyed-store", "destination": "/api/dyed-store" },
+    { "source": "/total-color-used", "destination": "/api/total-color-used" },
+    { "source": "/total-order-received", "destination": "/api/total-order-received" },
+    { "source": "/party-total", "destination": "/api/party-total" }
+  ]
+}
