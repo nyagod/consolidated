@@ -1,17 +1,36 @@
-const xlsx = require('xlsx');
+import fs from 'fs';
+import path from 'path';
+import xlsx from 'xlsx';
 
-// Load the workbook and access the 'Consolidated' sheet
-const workbook = xlsx.readFile(__dirname + '/CONSOLIDATED REPORT OCTOBER 2024.xlsx'); // Use __dirname to locate the file relative to this script
-const sheet = workbook.Sheets['Consolidated'];
-const rawData = xlsx.utils.sheet_to_json(sheet, { header: 1, defval: null });
-
-// Find the section start index
-function findSection(keyword) {
-    return rawData.findIndex(row => row[0] && row[0].toString().includes(keyword));
+// Function to read the Excel file asynchronously
+async function readExcelFile(filePath) {
+    try {
+        const fileData = await fs.promises.readFile(filePath);
+        const workbook = xlsx.read(fileData, { type: 'buffer' });
+        return workbook;
+    } catch (error) {
+        console.error('Error reading file:', error);
+        throw error;
+    }
 }
 
-const undyedYarnStart = findSection('UNDYED YARN / STOCK');
-const availableSectionStart = findSection('AVAILABLE SECTION');
+// Load the workbook and access the 'Consolidated' sheet
+async function loadData() {
+    const filePath = path.join(process.cwd(), 'CONSOLIDATED REPORT OCTOBER 2024.xlsx');
+    const workbook = await readExcelFile(filePath);
+    const sheet = workbook.Sheets['Consolidated'];
+    
+    // Limit the range by specifying rows and columns (for example, A1:F50)
+    const range = 'A1:F300'; // Adjust this range based on your needs
+    const rawData = xlsx.utils.sheet_to_json(sheet, { header: 1, defval: null, range: range });
+    
+    return rawData;
+}
+
+// Find the section start index
+function findSection(keyword, rawData) {
+    return rawData.findIndex(row => row[0] && row[0].toString().includes(keyword));
+}
 
 // Convert section to dictionary format
 function arrayToDictionary(data) {
@@ -24,9 +43,23 @@ function arrayToDictionary(data) {
     });
 }
 
-const undyedYarnData = arrayToDictionary(rawData.slice(undyedYarnStart, availableSectionStart));
-
 // API handler
-export default function handler(req, res) {
-    res.status(200).json(undyedYarnData);
+export default async function handler(req, res) {
+    try {
+        const rawData = await loadData();
+        
+        const undyedYarnStart = findSection('UNDYED YARN / STOCK', rawData);
+        const availableSectionStart = findSection('AVAILABLE SECTION', rawData);
+        
+        if (undyedYarnStart === -1 || availableSectionStart === -1) {
+            return res.status(404).json({ message: 'Sections not found in the data.' });
+        }
+
+        const undyedYarnData = arrayToDictionary(rawData.slice(undyedYarnStart, availableSectionStart));
+        
+        return res.status(200).json(undyedYarnData);
+    } catch (error) {
+        console.error('Error processing data:', error);
+        return res.status(500).json({ message: 'Internal Server Error', error: error.message });
+    }
 }
