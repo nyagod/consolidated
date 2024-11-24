@@ -8,5 +8,8 @@
     { "source": "/total-color-used", "destination": "/api/total-color-used" },
     { "source": "/total-order-received", "destination": "/api/total-order-received" },
     { "source": "/party-total", "destination": "/api/party-total" }
-  ]
+  ],
+  "static": {
+    "public": "public"
+  }
 }

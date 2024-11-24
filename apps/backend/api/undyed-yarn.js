@@ -1,7 +1,18 @@
 const xlsx = require('xlsx');
+const path = require('path');
+const fs = require('fs');
+
+// Define the path to the Excel file in the 'public' folder
+const filePath = path.join(process.cwd(), 'public', 'CONSOLIDATED REPORT OCTOBER 2024.xlsx');
+
+// Check if the file exists
+if (!fs.existsSync(filePath)) {
+    console.error('File not found:', filePath);
+    process.exit(1); // Exit gracefully or return an error response
+}
 
 // Load the workbook and access the 'Consolidated' sheet
-const workbook = xlsx.readFile('./CONSOLIDATED REPORT OCTOBER 2024.xlsx');
+const workbook = xlsx.readFile(filePath);
 const sheet = workbook.Sheets['Consolidated'];
 const rawData = xlsx.utils.sheet_to_json(sheet, { header: 1, defval: null });
 
