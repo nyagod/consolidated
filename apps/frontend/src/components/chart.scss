@@ -1,0 +1,88 @@
+.chart_sec {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Slightly darker shadow for better contrast */
+    margin: 20px 0;
+
+    .title {
+        font-size: 24px; /* Slightly larger title */
+        margin-bottom: 15px;
+        color: #222; /* Brighter and bolder text */
+        text-align: center;
+        font-weight: 600;
+    }
+
+    .table_sec {
+        margin-top: 20px;
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+            font-size: 15px; /* Slightly larger text for readability */
+            text-align: left;
+
+            th, td {
+                padding: 10px 14px; /* Added padding for more space */
+                border: 1px solid #bbb; /* Darker border for visibility */
+            }
+
+            th {
+                background-color: #3f51b5; /* Bright blue for headers */
+                color: #fff; /* White text for contrast */
+                font-weight: bold;
+                text-transform: uppercase; /* Capitalize header text */
+            }
+
+            tr:nth-child(even) {
+                background-color: #e3f2fd; /* Light blue for even rows */
+            }
+
+            tr:nth-child(odd) {
+                background-color: #ffffff; /* White for odd rows */
+            }
+
+            tr:hover {
+                background-color: #bbdefb; /* Brighter blue for hover effect */
+                cursor: pointer;
+            }
+
+            td {
+                color: #333; /* Darker text for better readability */
+            }
+        }
+    }
+
+    /* Make sure the chart takes up 100% of its container */
+    .chart_container {
+        width: 100%; /* Ensure full width */
+        height: 300px; /* Can be adjusted as needed */
+        margin-top: 20px;
+    }
+
+    /* Total sum section */
+    .total_sum {
+        margin-top: 20px;
+        font-size: 16px; /* Slightly larger text for total sums */
+        font-weight: 600;
+
+        p {
+            margin: 5px 0;
+            color: #333; /* Darker color for readability */
+        }
+    }
+
+    /* Responsive Design for smaller screens */
+    @media (max-width: 768px) {
+        padding: 15px; /* Reduce padding on small screens */
+        
+        .title {
+            font-size: 20px; /* Slightly smaller title for smaller screens */
+        }
+
+        .table_sec table {
+            font-size: 14px; /* Slightly smaller text for smaller screens */
+        }
+    }
+}

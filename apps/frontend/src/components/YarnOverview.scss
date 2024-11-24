@@ -1,0 +1,46 @@
+.yarn-overview {
+    padding: 20px;
+
+    h2 {
+        text-align: center;
+        margin-bottom: 20px;
+        font-size: 1.5rem;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+        text-align: center;
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+
+        th {
+            background-color: #f4f4f4;
+            font-weight: bold;
+        }
+
+        tbody tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        tbody tr:hover {
+            background-color: #f1f1f1;
+        }
+    }
+
+    .recharts-legend-wrapper {
+        margin-top: 10px;
+    }
+
+    .recharts-bar {
+        transition: all 0.3s ease-in-out;
+
+        &:hover {
+            opacity: 0.8;
+        }
+    }
+}

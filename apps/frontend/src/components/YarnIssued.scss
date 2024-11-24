@@ -1,0 +1,76 @@
+/* src/components/YarnIssued.scss */
+
+.yarn-issued {
+    padding: 20px;
+    text-align: center;
+    
+    h2 {
+      font-size: 24px;
+      margin-bottom: 20px;
+      color: #536def;
+    }
+  
+    /* Table Styles */
+    table {
+      width: 100%;
+      margin-top: 20px;
+      border-collapse: collapse;
+      text-align: left;
+      
+      th, td {
+        padding: 12px;
+        border: 1px solid #ddd;
+      }
+  
+      th {
+        background-color: #f2f2f2;
+        color: #536def;
+      }
+  
+      td {
+        background-color: #fff;
+      }
+  
+      tr:nth-child(even) {
+        background-color: #f9f9f9;
+      }
+  
+      tr:hover {
+        background-color: #f1f1f1;
+      }
+    }
+  
+    /* Chart Styles */
+    .recharts-surface {
+      background-color: #fff;
+    }
+  
+    .recharts-bar-rectangular {
+      transition: transform 0.3s ease-in-out;
+    }
+  
+    .recharts-tooltip-item {
+      font-size: 14px;
+      color: #494747;
+    }
+  
+    .recharts-tooltip-wrapper {
+      background-color: rgba(0, 0, 0, 0.7);
+      border-radius: 4px;
+      padding: 20px;
+    }
+  
+    .recharts-tooltip-label {
+      font-weight: bold;
+      color: #536def;
+    }
+  
+    .recharts-bar-rectangular {
+      transition: transform 0.3s ease-in-out;
+    }
+  
+    .recharts-cartesian-axis-tick-value {
+      font-size: 14px;
+    }
+  }
+  

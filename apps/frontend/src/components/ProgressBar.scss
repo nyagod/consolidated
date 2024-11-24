@@ -1,0 +1,11 @@
+/* src/components/ProgressBar.scss */
+.summary-text p {
+  font-size: 16px;
+  margin: 5px 0;
+  color: #333;
+  transition: color 0.3s ease-in-out;
+}
+
+.summary-text p:hover {
+  color: #536def; /* Color changes on hover for a subtle effect */
+}

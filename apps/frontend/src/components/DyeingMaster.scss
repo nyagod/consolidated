@@ -1,0 +1,67 @@
+/* src/components/DyeingMasters.scss */
+.dyeing-masters {
+    padding: 30px;
+    text-align: center;
+    background-color: #f7f8fc;
+    border-radius: 10px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+  
+    h2 {
+      font-size: 28px;
+      margin-bottom: 30px;
+      color: #1a237e;
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+  
+    .recharts-surface {
+      background-color: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+    }
+  
+    /* Tooltip Styling */
+    .recharts-tooltip-wrapper {
+      background-color: rgba(0, 0, 0, 0.7);
+      border-radius: 8px;
+      padding: 12px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+  
+    .recharts-tooltip-label {
+      font-weight: bold;
+      color: #536def;
+      font-size: 16px;
+    }
+  
+    .recharts-tooltip-item {
+      font-size: 14px;
+      color: #fff;
+      margin-top: 6px;
+    }
+  
+    /* Legend Styling */
+    .recharts-legend-item {
+      font-size: 14px;
+      color: #444;
+      font-weight: bold;
+    }
+  
+    /* Grid and Axes Styling */
+    .recharts-cartesian-axis-tick-value {
+      font-size: 14px;
+      color: #444;
+    }
+  
+    .recharts-cartesian-axis-line,
+    .recharts-cartesian-axis-tick-line {
+      stroke: #ddd;
+    }
+  
+    .recharts-cartesian-grid-line {
+      stroke: #eee;
+    }
+  }
+  
