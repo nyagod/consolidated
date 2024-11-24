@@ -10,7 +10,7 @@ if (!fs.existsSync(filePath)) {
     console.error('File not found:', filePath);
     process.exit(1); // Exit gracefully or return an error response
 }
-
+console.log(filePath);
 // Load the workbook and access the 'Consolidated' sheet
 const workbook = xlsx.readFile(filePath);
 const sheet = workbook.Sheets['Consolidated'];
