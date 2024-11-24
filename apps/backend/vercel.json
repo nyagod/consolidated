@@ -1,6 +1,12 @@
 {
   "version": 2,
-  "public": "./public", 
+  "functions": {
+    "api/**/*": {
+      "includeFiles": [
+        "./CONSOLIDATED REPORT OCTOBER 2024.xlsx"
+      ]
+    }
+  },
   "rewrites": [
     { "source": "/", "destination": "/api/hello" },
     { "source": "/undyed-yarn", "destination": "/api/undyed-yarn" },
