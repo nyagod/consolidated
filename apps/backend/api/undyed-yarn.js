@@ -3,8 +3,8 @@ import path from 'path';
 import xlsx from 'xlsx';
 
 // Get the absolute path to the Excel file in the 'api' folder
-const filePath = path.join(process.cwd(), 'apps', 'backend/api/CONSOLIDATED REPORT OCTOBER 2024.xlsx');
-
+const filePath = path.join(process.cwd(), 'api', '/CONSOLIDATED REPORT OCTOBER 2024.xlsx');
+console.log( filePath)
 // Function to read the Excel file asynchronously
 async function readExcelFile(filePath) {
     try {
